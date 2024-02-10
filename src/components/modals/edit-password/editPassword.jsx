@@ -1,5 +1,5 @@
 import * as T from "../add-ads/addAds.styled";
-import { getTokenFromLocalStorage, updatePassword } from "../../api";
+import { getTokenFromLocalStorage, updatePassword } from "../../../api/api";
 import { useState } from "react";
 
 export const EditPassword = ({ setOpenFormChangePassword }) => {

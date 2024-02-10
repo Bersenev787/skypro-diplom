@@ -43,15 +43,17 @@ export const HeaderAuth = ({ ads, setAds }) => {
               </Link>
             </S.LogoMobLink>
           </S.HeaderLogo>
-          <S.HeaderBtnPutAd onClick={() => setOpenFormAddAds(true)}>
-            Разместить объявление
-          </S.HeaderBtnPutAd>
-          <S.HeaderBtnLk onClick={() => navigate("/profile/me")}>
-            Личный кабинет
-          </S.HeaderBtnLk>
-          <S.HeaderBtnPutAd onClick={() => handleClickLogout()}>
-            Выход
-          </S.HeaderBtnPutAd>
+          <S.HeaderBtnContainer>
+            <S.HeaderBtnPutAd onClick={() => setOpenFormAddAds(true)}>
+              Разместить объявление
+            </S.HeaderBtnPutAd>
+            <S.HeaderBtnPutAd onClick={() => navigate("/profile/me")}>
+              Личный кабинет
+            </S.HeaderBtnPutAd>
+            <S.HeaderBtnPutAd onClick={() => handleClickLogout()}>
+              Выход
+            </S.HeaderBtnPutAd>
+          </S.HeaderBtnContainer>
         </S.HeaderNav>
       </S.Header>
     </>

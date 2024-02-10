@@ -8,6 +8,7 @@ import {
   usePostAdsImageMutation,
 } from "../../../store/services/auth";
 import * as T from "./addAds.styled";
+import { apiHost } from "../../../api/constants";
 
 export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
   const closeForm = () => {
@@ -149,11 +150,7 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
                           x
                         </T.DeleteImageBtn>
                         <T.FormNewArtImgImg
-                          src={
-                            !image.url
-                              ? ""
-                              : `http://localapiHost:8090/${image.url}`
-                          }
+                          src={!image.url ? "" : `${apiHost}/${image.url}`}
                           alt=""
                         />
                       </T.FormNewArtImg>

@@ -41,7 +41,7 @@ export const AddAds = ({ setOpenFormAddAds }) => {
         description: description,
         price: price,
       },
-    });
+    }).then(() => closeForm());
   };
 
   useEffect(() => {

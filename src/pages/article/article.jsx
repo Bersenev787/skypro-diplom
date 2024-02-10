@@ -17,6 +17,7 @@ import { EditAds } from "../../components/modals/add-ads/editAds";
 import { Comments } from "../../components/modals/comments/comments";
 import { getTokenFromLocalStorage } from "../../api/api";
 import { apiHost } from "../../api/constants";
+import { useNavigate } from "react-router-dom";
 
 export const Article = () => {
   const { id } = useParams();
@@ -30,16 +31,20 @@ export const Article = () => {
   const { data: adsComments } = useGetAllCommentsQuery(id);
   const [saveButton, setSaveButton] = useState(true);
   const [currAds, setCurrAds] = useState(null);
+  const navigate = useNavigate();
 
   const clickShowPhone = () => {
-    setShowPhone(true);
+    if (data.user.phone) {
+      return setShowPhone(true);
+    }
+    return setShowPhone(false);
   };
 
   const handleDeleteAds = async () => {
     deleteAds({
       token: getTokenFromLocalStorage(),
       id: id,
-    });
+    }).then(() => navigate("/"));
     setSaveButton(false);
   };
 
@@ -65,6 +70,22 @@ export const Article = () => {
   const handleCardClick = (card, i) => {
     setSelectedCard(card);
     setInd(i);
+  };
+
+  const commentsTitle = () => {
+    if (adsComments?.length === 1) {
+      return "отзыв";
+    }
+
+    if (adsComments?.length > 1 && adsComments?.length < 5) {
+      return "отзыва";
+    }
+
+    if (adsComments?.length < 5) {
+      return "отзывов";
+    }
+
+    return "отзывов";
   };
 
   return (
@@ -150,7 +171,8 @@ export const Article = () => {
                         <T.ArticleLink
                           onClick={() => setOpenFormComments(true)}
                         >
-                          {adsComments ? adsComments.length : "..."} отзыв
+                          {adsComments ? adsComments.length : "..."}{" "}
+                          {commentsTitle()}
                         </T.ArticleLink>
                       </T.ArticleInfo>
                       <T.ArticlePrice>{data.price}.₽</T.ArticlePrice>
@@ -172,7 +194,7 @@ export const Article = () => {
                         </T.ArticleBtnBlock>
                       ) : (
                         <T.ArticleBtn onClick={clickShowPhone}>
-                          Показать&nbsp;телефон
+                          Показать телефон
                           <T.ArticleBtnSpan>
                             {!showPhone ? `+X XXX XXX XX XX` : data.user.phone}
                           </T.ArticleBtnSpan>

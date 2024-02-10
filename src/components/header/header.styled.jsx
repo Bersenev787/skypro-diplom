@@ -66,30 +66,15 @@ export const LogoMobImg = styled.img`
   }
 `;
 
-export const HeaderBtnPutAd = styled.button`
-  width: 232px;
-  height: 40px;
-  border: 1px solid #ffffff;
-  border-radius: 6px;
-  background-color: transparent;
-  color: #ffffff;
-  font-size: 16px;
-  line-height: 1;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid #ffffff;
-  }
-
-  @media screen and (max-width: 620px) {
-    display: none;
-  }
+export const HeaderBtnContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 `;
 
-export const HeaderBtnLk = styled.button`
-  width: 173px;
+export const HeaderBtnPutAd = styled.button`
   height: 40px;
-  margin-left: 10px;
+  padding: 8px 24px;
   border: 1px solid #ffffff;
   border-radius: 6px;
   background-color: transparent;
