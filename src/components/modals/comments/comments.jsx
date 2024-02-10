@@ -1,9 +1,9 @@
 import * as T from "./comments.styled";
-import noAvatar from "../../img/myprofile.png";
-import { useAddCommentMutation } from "../../store/services/auth";
+import noAvatar from "../../../img/myprofile.png";
+import { useAddCommentMutation } from "../../../store/services/auth";
 import { useEffect, useState } from "react";
-import { getTokenFromLocalStorage } from "../../api";
-import { useAuthSelector } from "../../store/slices/auth";
+import { getTokenFromLocalStorage } from "../../../api/api";
+import { useAuthSelector } from "../../../store/slices/auth";
 import { Link, useParams } from "react-router-dom";
 
 export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {

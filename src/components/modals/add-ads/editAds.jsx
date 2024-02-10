@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getTokenFromLocalStorage, updateToken } from "../../api";
+import { getTokenFromLocalStorage, updateToken } from "../../../api/api";
 import {
   useDeleteAdsImagesMutation,
   useGetAdsByIdQuery,
   useGetEditAdsMutation,
   usePostAdsImageMutation,
-} from "../../store/services/auth";
+} from "../../../store/services/auth";
 import * as T from "./addAds.styled";
 
 export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
