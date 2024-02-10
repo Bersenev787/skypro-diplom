@@ -2,7 +2,7 @@ import * as T from "./comments.styled";
 import noAvatar from "../../img/myprofile.png";
 import { useAddCommentMutation } from "../../store/services/auth";
 import { useEffect, useState } from "react";
-import { getTokenFromLocalStorage} from "../../api";
+import { getTokenFromLocalStorage } from "../../api";
 import { useAuthSelector } from "../../store/slices/auth";
 import { Link, useParams } from "react-router-dom";
 
@@ -11,7 +11,7 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
     setOpenFormComments(false);
   };
   const { id } = useParams();
-  const [addComment, { data, isLoading}] = useAddCommentMutation(id);
+  const [addComment, { data, isLoading }] = useAddCommentMutation(id);
   const [newComment, setNewComment] = useState("");
   const [error, setError] = useState(null);
   const auth = useAuthSelector();
@@ -33,7 +33,7 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
 
   useEffect(() => {
     if (newComment !== "") {
-      setAdsComments([data, ...comments])
+      setAdsComments([data, ...comments]);
     }
   }, [data]); // eslint-disable-line
 
@@ -90,7 +90,7 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
                             <T.ReviewImg>
                               {item.author?.avatar ? (
                                 <T.ReviewImgImg
-                                  src={`http://localhost:8090/${item.author?.avatar}`}
+                                  src={`http://localapiHost:8090/${item.author?.avatar}`}
                                   alt=""
                                 />
                               ) : (

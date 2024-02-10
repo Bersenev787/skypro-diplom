@@ -152,7 +152,7 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
                           src={
                             !image.url
                               ? ""
-                              : `http://localhost:8090/${image.url}`
+                              : `http://localapiHost:8090/${image.url}`
                           }
                           alt=""
                         />
