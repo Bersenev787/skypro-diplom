@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import * as S from "./App.style";
+import { AppRoutes } from "./routes";
+import { createContext, useEffect, useState } from "react";
+import { getTokenFromLocalStorage, getUser } from "./api/api";
+import store from "./store/store";
+import { setUserId, useGetAllAdsQuery } from "./store/services/auth";
+
+export const UserContext = createContext("");
+
+export const saveUserIdToState = (token) => {
+  if (token) {
+    getUser(token)
+      .then((data) => {
+        store.dispatch(setUserId(data.id));
+      })
+      .catch((error) => console.error(error));
+  }
+};
 
 function App() {
+  const [ads, setAds] = useState();
+  const { data, isLoading } = useGetAllAdsQuery();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("auth")));
+
+  useEffect(() => {
+    saveUserIdToState(getTokenFromLocalStorage());
+    setUser(JSON.parse(localStorage.getItem("auth")));
+    setAds(data);
+  }, [data]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <S.Wrapper>
+      <S.Container>
+        <S.StyLeGlobal />
+        <UserContext.Provider value={{ user: user, setUser }}>
+          <AppRoutes isLoading={isLoading} ads={ads} setAds={setAds} />
+        </UserContext.Provider>
+      </S.Container>
+    </S.Wrapper>
   );
 }
 
