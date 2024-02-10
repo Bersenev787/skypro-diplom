@@ -3,6 +3,7 @@ import { MainPage } from "./pages/main/main";
 import { ProtectedRoute } from "./protector-router";
 import { Login } from "./pages/auth/login";
 import { Registration } from "./pages/auth/registration";
+import { NotFound } from "./pages/not-found/notFound";
 
 export const AppRoutes = ({ ads, isLoading, setAds }) => {
   return (
@@ -17,7 +18,9 @@ export const AppRoutes = ({ ads, isLoading, setAds }) => {
         element={
           <ProtectedRoute isAllowed={Boolean(localStorage.getItem("token"))} />
         }
-      ></Route>
+      />
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

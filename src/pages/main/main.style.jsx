@@ -222,9 +222,9 @@ export const MainContainer = styled.div`
 export const MainH2 = styled.h2`
   font-style: normal;
   font-weight: 500;
-  font-size: 40px;
+  font-size: 32px;
   line-height: 42px;
-  color: #000000;
+  color: #009ee4;
   margin-bottom: 30px;
 
   &:hover::before {
