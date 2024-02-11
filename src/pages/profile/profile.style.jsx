@@ -250,15 +250,23 @@ export const SettingsBtn = styled.button`
   background-color: #009ee4;
   border-radius: 6px;
   border: 1px solid #009ee4;
+
   &:hover {
     background-color: #0080c1;
   }
+
   @media screen and (max-width: 620px) {
     font-size: 16px;
     line-height: 1;
     width: 100%;
     height: 46px;
     margin: 8px 0px 0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #009ee4;
+    border: 1px solid #009ee4;
   }
 `;
 

@@ -4,7 +4,7 @@ import { MainMenu } from "../../components/menu/menu";
 import * as S from "../../App.style";
 import * as T from "./profile.style";
 import { ContentCard } from "../../components/cards/cards";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   getTokenFromLocalStorage,
   updateUser,
@@ -16,32 +16,36 @@ import { EditPassword } from "../../components/modals/edit-password/editPassword
 import { apiHost } from "../../api/constants";
 
 export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
-  const [currentProfiled, setCurrentProfiled] = useState(userProfile);
+  const [currentProfile, setCurrentProfile] = useState(userProfile);
   const [img, setImg] = useState(null);
-  const profiledRef = useRef();
+  const nameRef = useRef();
+  const surnameRef = useRef();
+  const cityRef = useRef();
+  const phoneRef = useRef();
   const [openFormChangePassword, setOpenFormChangePassword] = useState(false);
+  const [isDisabledButton, setDisabledButton] = useState(true);
 
   const handleName = (event) => {
     event.preventDefault();
-    setCurrentProfiled({ ...currentProfiled, name: event.target.value });
+    setCurrentProfile({ ...currentProfile, name: event.target.value });
   };
   const handleSurname = (event) => {
     event.preventDefault();
-    setCurrentProfiled({ ...currentProfiled, surname: event.target.value });
+    setCurrentProfile({ ...currentProfile, surname: event.target.value });
   };
   const handleCity = (event) => {
     event.preventDefault();
-    setCurrentProfiled({ ...currentProfiled, city: event.target.value });
+    setCurrentProfile({ ...currentProfile, city: event.target.value });
   };
   const handlePhone = (event) => {
     event.preventDefault();
-    setCurrentProfiled({ ...currentProfiled, phone: event.target.value });
+    setCurrentProfile({ ...currentProfile, phone: event.target.value });
   };
 
   const handleAvatarClick = (event) => {
     const fileUpload = document.getElementById("file-upload");
     fileUpload.click();
-    setCurrentProfiled({ ...currentProfiled, avatar: event.target.value });
+    setCurrentProfile({ ...currentProfile, avatar: event.target.value });
   };
 
   const handleAvatarUpload = (file) => {
@@ -61,8 +65,12 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
   };
 
   const handleSaveChanges = (event) => {
+    if (isDisabledButton) {
+      return;
+    }
+
     event.preventDefault();
-    updateUser(currentProfiled, getTokenFromLocalStorage())
+    updateUser(currentProfile, getTokenFromLocalStorage())
       .then((data) => {
         setUserProfile(data);
       })
@@ -70,6 +78,32 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
         console.error("Error fetching workout data:", error);
       });
   };
+
+  const isProfileValuesEqual = (array1, array2) => {
+    if (array1.length !== array2.length) {
+      return false;
+    }
+
+    if (
+      !nameRef.current.value.length &&
+      !surnameRef.current.value.length &&
+      !cityRef.current.value.length &&
+      !phoneRef.current.value.length
+    ) {
+      return true;
+    }
+
+    return array1.every((item, index) => array2[index] === item);
+  };
+
+  useEffect(() => {
+    const userProfileValues = Object.values(userProfile);
+    const currentProfileValues = Object.values(currentProfile);
+
+    setDisabledButton(
+      isProfileValuesEqual(userProfileValues, currentProfileValues)
+    );
+  }, [userProfile, currentProfile, isDisabledButton]);
 
   return (
     <>
@@ -132,7 +166,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                             name="name"
                             type="text"
                             placeholder={userProfile.name}
-                            ref={profiledRef}
+                            ref={nameRef}
                             onChange={(event) => handleName(event)}
                           />
                         </T.SettingsDiv>
@@ -146,7 +180,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                             name="surname"
                             type="text"
                             placeholder={userProfile.surname}
-                            ref={profiledRef}
+                            ref={surnameRef}
                             onChange={(event) => {
                               handleSurname(event);
                             }}
@@ -162,7 +196,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                             name="city"
                             type="text"
                             placeholder={userProfile.city}
-                            ref={profiledRef}
+                            ref={cityRef}
                             onChange={(event) => {
                               handleCity(event);
                             }}
@@ -179,7 +213,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                             type="tel"
                             width={614}
                             placeholder={userProfile.phone}
-                            ref={profiledRef}
+                            ref={phoneRef}
                             onChange={(event) => {
                               handlePhone(event);
                             }}
@@ -187,8 +221,10 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                         </T.SettingsDiv>
                         <T.SettingsBtn
                           id="settings-btn"
+                          disabled={isDisabledButton}
                           onClick={(event) => handleSaveChanges(event)}
                         >
+                          {isDisabledButton}
                           Сохранить
                         </T.SettingsBtn>
                         <T.SettingsBtn
