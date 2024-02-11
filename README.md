@@ -31,7 +31,7 @@ Backend находится по адресу http://127.0.0.1:8090/ для за�
 Запуск Docker из терминала
 
 - Через терминал перейдите в папку: cd back-skyVito
-- Запустите в терминале команду:docker-compose -f docker-compose-backend.yaml up -d docker-compose -f docker-compose-backend.yaml up -d
+- Запустите в терминале команду: docker-compose -f docker-compose-backend.yaml up -d
 - Чтобы остановить работу бэкенда выполните: docker-compose down
 
 ## Стек
