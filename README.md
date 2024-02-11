@@ -19,7 +19,7 @@ npm ci
 Запуск проекта:
 
 ```bash
-npm run start
+npm start
 ```
 
 Проект будет запущен по адресу: http://localhost:3000

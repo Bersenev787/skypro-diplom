@@ -4,6 +4,7 @@ export const MainContainer = styled.div`
   max-width: 1178px;
   margin: 0 auto;
   padding: 0px 10px 79px;
+
   @media screen and (max-width: 768px) {
     padding: 85px 0px 84px;
   }
@@ -15,6 +16,7 @@ export const MainH2 = styled.h2`
   line-height: 42px;
   color: #000000;
   margin-bottom: 30px;
+
   @media screen and (max-width: 620px) {
     font-size: 24px;
     line-height: 29px;
@@ -26,6 +28,7 @@ export const MainH2 = styled.h2`
 `;
 export const MainCenterBlock = styled.div`
   margin: 0 auto;
+
   @media screen and (max-width: 580px) {
     margin: 0 auto;
     padding: 0 20px;
@@ -35,6 +38,7 @@ export const MainCenterBlock = styled.div`
 export const MainProfileSell = styled.div`
   width: 100%;
   padding: 0 0 70px;
+
   @media screen and (max-width: 580px) {
     width: 100%;
     padding: 0 0 40px;
@@ -43,10 +47,12 @@ export const MainProfileSell = styled.div`
 
 export const ProfileSellContent = styled.div`
   width: 100%;
+
   @media screen and (max-width: 890px) {
     max-width: 834px;
     width: 100%;
   }
+
   @media screen and (max-width: 580px) {
     max-width: 100%;
     width: 100%;
@@ -63,10 +69,12 @@ export const ProfileSellSeller = styled.div`
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: start;
+
   @media screen and (max-width: 890px) {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   }
+
   @media screen and (max-width: 580px) {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -88,6 +96,7 @@ export const SellerLeft = styled.div`
   -ms-flex-align: center;
   align-items: center;
   margin-right: 50px;
+
   @media screen and (max-width: 580px) {
     display: none;
     margin-right: 0px;
@@ -99,10 +108,12 @@ export const SellerImg = styled.div`
   height: 170px;
   border-radius: 50%;
   background-color: #f0f0f0;
+
   @media screen and (max-width: 580px) {
     display: none;
   }
 `;
+
 export const SellerImgImg = styled.img`
   width: 100%;
   height: auto;
@@ -113,6 +124,7 @@ export const SellerImgImg = styled.img`
 
 export const SellerRight = styled.div`
   width: auto;
+
   @media screen and (max-width: 580px) {
     width: 100%;
   }
@@ -124,6 +136,7 @@ export const SellerTitle = styled.h3`
   line-height: 40px;
   color: #000000;
   margin-bottom: 0px;
+
   @media screen and (max-width: 580px) {
     font-size: 20px;
     line-height: 26px;
@@ -136,6 +149,7 @@ export const SellerCity = styled.p`
   line-height: 21px;
   color: #5f5f5f;
   margin-bottom: 10px;
+
   @media screen and (max-width: 580px) {
     font-size: 16px;
     line-height: 21px;
@@ -143,11 +157,13 @@ export const SellerCity = styled.p`
     margin-bottom: 6px;
   }
 `;
+
 export const SellerInf = styled.p`
   font-size: 16px;
   line-height: 21px;
   color: #5f5f5f;
   margin-bottom: 10px;
+
   @media screen and (max-width: 580px) {
     font-size: 16px;
     line-height: 21px;
@@ -158,6 +174,7 @@ export const SellerInf = styled.p`
 
 export const SellerImgMobBlock = styled.div`
   display: none;
+
   @media screen and (max-width: 580px) {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -179,6 +196,7 @@ export const SellerImgMob = styled.div`
     background-color: #f0f0f0;
   }
 `;
+
 export const SellerImgMobImg = styled.img`
   @media screen and (max-width: 580px) {
     width: 100%;
@@ -195,6 +213,7 @@ export const MainTitle = styled.h3`
   line-height: 40px;
   font-weight: 500;
   color: #000000;
+
   @media screen and (max-width: 580px) {
     font-size: 18px;
     line-height: 1;
@@ -205,6 +224,7 @@ export const MainTitle = styled.h3`
 export const MainContent = styled.div`
   width: 100%;
   margin: 0 auto;
+
   @media screen and (max-width: 580px) {
     width: 100%;
     margin: 0 auto;
@@ -224,9 +244,11 @@ export const ArticleBtn = styled.div`
   font-family: "Roboto", sans-serif;
   text-align: center;
   padding-top: 10px;
+
   &:hover {
     background-color: #0080c1;
   }
+
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 57px;
@@ -241,6 +263,7 @@ export const ArticleBtnSpan = styled.span`
   font-size: 14px;
   font-weight: 400;
   text-align: center;
+
   @media screen and (max-width: 768px) {
     font-size: 12px;
   }

@@ -47,7 +47,7 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
               <T.ModalBtnClose>
                 <T.ModalBtnCloseLine onClick={closeForm}></T.ModalBtnCloseLine>
               </T.ModalBtnClose>
-              <T.ModalScroll>
+              <T.ModalInner>
                 {auth.isAuth === false ? (
                   <T.FormNewArt>
                     Для того чтобы оставить отзыв,{" "}
@@ -117,7 +117,7 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
                       ))}
                   </T.ReviewsReview>
                 </T.ModalReviews>
-              </T.ModalScroll>
+              </T.ModalInner>
             </T.ModalContent>
           ) : (
             <T.ModalTitle>Отзывы загружаются...</T.ModalTitle>

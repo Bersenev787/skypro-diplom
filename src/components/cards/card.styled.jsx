@@ -5,8 +5,7 @@ export const ContentCards = styled.div`
   width: 100%;
   display: -ms-grid;
   display: grid;
-  /* -ms-grid-columns: (270px) [4]; */
-  grid-template-columns: repeat(4, 270px);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 441px;
   grid-gap: 40px 26px;
   -webkit-box-pack: center;
@@ -16,7 +15,6 @@ export const ContentCards = styled.div`
   scrollbar-color: #ffffff #2e2e2e;
   scrollbar-width: thin;
   scrollbar-width: 0px;
-  height: 441px;
 
   &::-webkit-scrollbar {
     width: 0px;
@@ -31,28 +29,24 @@ export const ContentCards = styled.div`
   @media screen and (max-width: 1158px) {
     display: -ms-grid;
     display: grid;
-    /* -ms-grid-columns: (270px) [3]; */
-    grid-template-columns: repeat(3, 270px);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media screen and (max-width: 890px) {
     display: -ms-grid;
     display: grid;
-    /* -ms-grid-columns: (270px) [2]; */
-    grid-template-columns: repeat(2, 270px);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media screen and (max-width: 580px) {
     display: -ms-grid;
     display: grid;
-    /* -ms-grid-columns: (137px) [2]; */
-    grid-template-columns: repeat(2, 137px);
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 293px;
     grid-gap: 10px 10px;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    height: 596px;
   }
 `;
 

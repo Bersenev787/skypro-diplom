@@ -1,5 +1,5 @@
 import { createGlobalStyle, styled } from "styled-components";
-export const StyLeGlobal = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
@@ -47,7 +47,7 @@ export const StyLeGlobal = createGlobalStyle`
   font-family: 'Roboto';
   src:
     local('Roboto'),
-    url('../../fonts/Roboto/Roboto-Regular.ttf') format('truetype'),
+    url('../../fonts/Roboto/Roboto-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }

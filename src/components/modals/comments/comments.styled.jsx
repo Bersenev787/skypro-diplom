@@ -115,12 +115,15 @@ export const ModalBtnCloseLine = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+
   &:hover::after {
     background-color: #0080c1;
   }
+
   &:hover::before {
     background-color: #0080c1;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -133,6 +136,7 @@ export const ModalBtnCloseLine = styled.div`
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
+
   &::before {
     content: "";
     position: absolute;
@@ -145,12 +149,13 @@ export const ModalBtnCloseLine = styled.div`
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
   @media screen and (max-width: 600px) {
     display: none;
   }
 `;
 
-export const ModalScroll = styled.div`
+export const ModalInner = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -162,18 +167,6 @@ export const ModalScroll = styled.div`
   -ms-flex-align: start;
   align-items: flex-start;
   width: 100%;
-  overflow-y: auto;
-  scrollbar-color: #ffffff #2e2e2e;
-  scrollbar-width: thin;
-  scrollbar-width: 0px;
-  &::-webkit-scrollbar {
-    width: 0px;
-    background-color: #ffffff;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #d9d9d9;
-    border-radius: 0px;
-  }
 `;
 
 export const ModalFormNewArt = styled.form`
@@ -202,6 +195,7 @@ export const FormNewArtBlock = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
   margin-bottom: 14px;
+
   @media screen and (max-width: 600px) {
     width: 100%;
     display: -webkit-box;
@@ -237,6 +231,8 @@ export const FormNewArtArea = styled.textarea`
   width: 100%;
   height: 100px;
   max-height: 100px;
+  resize: none;
+
   &::-webkit-input-placeholder {
     font-family: "Roboto", sans-serif;
     font-style: normal;
@@ -245,6 +241,7 @@ export const FormNewArtArea = styled.textarea`
     line-height: 24px;
     color: #0000004d;
   }
+
   &:-ms-input-placeholder {
     font-family: "Roboto", sans-serif;
     font-style: normal;
@@ -253,6 +250,7 @@ export const FormNewArtArea = styled.textarea`
     line-height: 24px;
     color: #0000004d;
   }
+
   &::-ms-input-placeholder {
     font-family: "Roboto", sans-serif;
     font-style: normal;
@@ -261,6 +259,7 @@ export const FormNewArtArea = styled.textarea`
     line-height: 24px;
     color: #0000004d;
   }
+
   &::placeholder {
     font-family: "Roboto", sans-serif;
     font-style: normal;
@@ -269,6 +268,7 @@ export const FormNewArtArea = styled.textarea`
     line-height: 24px;
     color: #0000004d;
   }
+
   @media screen and (max-width: 600px) {
     font-family: "Roboto", sans-serif;
     width: 100%;
@@ -279,21 +279,25 @@ export const FormNewArtArea = styled.textarea`
     border-radius: 30px;
     font-size: 16px;
     line-height: 1;
+
     &::-webkit-input-placeholder {
       font-size: 14px;
       line-height: 21px;
       color: #c4c4c4;
     }
+
     &:-ms-input-placeholder {
       font-size: 14px;
       line-height: 21px;
       color: #c4c4c4;
     }
+
     &::-ms-input-placeholder {
       font-size: 14px;
       line-height: 21px;
       color: #c4c4c4;
     }
+
     &::placeholder {
       font-size: 14px;
       line-height: 21px;
@@ -311,9 +315,11 @@ export const FormNewArtBtnPub = styled.button`
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
+
   &:hover {
     background-color: #0080c1;
   }
+
   @media screen and (max-width: 600px) {
     margin-top: 0px;
     width: 100%;
@@ -324,7 +330,6 @@ export const FormNewArtBtnPub = styled.button`
 
 export const ModalReviews = styled.div`
   width: 100%;
-  height: 495px;
 `;
 
 export const ReviewsReview = styled.div`
@@ -367,6 +372,7 @@ export const ReviewImg = styled.div`
   border-radius: 50%;
   background-color: #f0f0f0;
 `;
+
 export const ReviewImgImg = styled.img`
   display: block;
   width: 100%;
@@ -385,6 +391,7 @@ export const ReviewName = styled.p`
   font-size: 16px;
   line-height: 32px;
   color: #000000;
+
   @media screen and (max-width: 600px) {
     font-size: 14px;
     line-height: 28px;
@@ -402,16 +409,19 @@ export const ReviewTitle = styled.h5`
   font-size: 16px;
   line-height: 32px;
   color: #000000;
+
   @media screen and (max-width: 600px) {
     font-size: 14px;
     line-height: 28px;
     color: #000000;
   }
 `;
+
 export const ReviewText = styled.p`
   font-size: 16px;
   line-height: 32px;
   color: #000000;
+
   @media screen and (max-width: 600px) {
     font-size: 14px;
     line-height: 28px;
