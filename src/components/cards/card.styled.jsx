@@ -12,19 +12,6 @@ export const ContentCards = styled.div`
   -ms-flex-pack: center;
   justify-content: center;
   overflow-y: auto;
-  scrollbar-color: #ffffff #2e2e2e;
-  scrollbar-width: thin;
-  scrollbar-width: 0px;
-
-  &::-webkit-scrollbar {
-    width: 0px;
-    background-color: #009ee4;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #0080c1;
-    border-radius: 3px;
-  }
 
   @media screen and (max-width: 1158px) {
     display: -ms-grid;

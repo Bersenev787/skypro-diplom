@@ -278,41 +278,27 @@ export const ContentCards = styled.div`
   width: 100%;
   display: -ms-grid;
   display: grid;
-  /* -ms-grid-columns: (270px) [4]; */
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px 26px;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
 
-  &::-webkit-scrollbar {
-    width: 0px;
-    background-color: #009ee4;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #0080c1;
-    border-radius: 3px;
-  }
-
   @media screen and (max-width: 1158px) {
     display: -ms-grid;
     display: grid;
-    /* -ms-grid-columns: (270px) [3]; */
     grid-template-columns: repeat(3, 1fr);
   }
 
   @media screen and (max-width: 890px) {
     display: -ms-grid;
     display: grid;
-    /* -ms-grid-columns: (270px) [2]; */
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media screen and (max-width: 590px) {
     display: -ms-grid;
     display: grid;
-    /* -ms-grid-columns: (137px) [2]; */
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 293px;
     grid-gap: 10px 10px;

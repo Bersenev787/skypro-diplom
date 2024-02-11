@@ -26,6 +26,8 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
       token: getTokenFromLocalStorage(),
       text: newComment,
       id: id,
+    }).then(() => {
+      closeForm();
     });
     setNewComment("");
     setSaveButton(true);
