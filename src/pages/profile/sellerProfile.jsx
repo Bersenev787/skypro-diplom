@@ -16,6 +16,10 @@ export const SellerProfile = ({ userProfile, isLoading }) => {
   };
   const auth = useAuthSelector();
 
+  const userProfilePhone = () => {
+    return userProfile?.phone || "No phone number";
+  };
+
   return (
     <>
       {auth.isAuth === true ? <HeaderAuth /> : <Header />}
@@ -61,9 +65,9 @@ export const SellerProfile = ({ userProfile, isLoading }) => {
                       </T.SellerImgMobBlock>
 
                       <T.ArticleBtn onClick={clickShowPhone}>
-                        Показать&nbsp;телефон
+                        Показать телефон
                         <T.ArticleBtnSpan>
-                          {!showPhone ? `+7 XXX XXX XX XX` : userProfile?.phone}
+                          {!showPhone ? `+7 XXX XXX XX XX` : userProfilePhone()}
                         </T.ArticleBtnSpan>
                       </T.ArticleBtn>
                     </T.SellerRight>
