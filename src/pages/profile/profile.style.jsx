@@ -218,6 +218,7 @@ export const SettingsFormInput = styled.input`
     &::placeholder {
       font-size: 14px;
       line-height: 21px;
+    }
   }
 `;
 
