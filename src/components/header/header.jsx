@@ -22,7 +22,7 @@ export const HeaderAuth = ({ ads, setAds }) => {
   const navigate = useNavigate();
   const handleClickLogout = () => {
     removeTokenFromLocalStorage();
-    navigate("/login");
+    navigate("/");
   };
   const [openFormAddAds, setOpenFormAddAds] = useState(false);
   return (

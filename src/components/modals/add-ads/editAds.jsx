@@ -28,8 +28,6 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
 
   const ads = useMemo(() => data || [], [data]);
 
-  console.log(currAds);
-
   const handleAdTitleChange = (event) => {
     setTitle(event.target.value);
     setSaveButtonActive(true);

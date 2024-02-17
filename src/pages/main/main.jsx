@@ -24,8 +24,6 @@ export const MainPage = ({ ads, setAds, isLoading }) => {
 
   const filterAd = filteredAds();
 
-  console.log(auth?.isAuth);
-
   return (
     <>
       {auth?.isAuth ? <HeaderAuth ads={ads} setAds={setAds} /> : <Header />}

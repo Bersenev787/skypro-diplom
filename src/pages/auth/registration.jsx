@@ -78,7 +78,7 @@ export const Registration = ({ isLoginMode = false }) => {
     <S.ContainerEnter>
       <S.ModalBlockRegister>
         <S.ModalFormReg id="formLogUp" action="#">
-          <S.ModalLogo>
+          <S.ModalLogo to="/">
             <S.ModalLogoImg src={img} alt="logo" />
           </S.ModalLogo>
           <S.ModalInputRegister

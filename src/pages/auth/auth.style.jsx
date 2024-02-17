@@ -88,7 +88,7 @@ export const ModalFormReg = styled.form`
   }
 `;
 
-export const ModalLogo = styled.div`
+export const ModalLogo = styled(Link)`
   width: 140px;
   height: 21px;
   margin-bottom: 34px;

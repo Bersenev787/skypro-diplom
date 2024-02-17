@@ -1,6 +1,65 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getTokenFromLocalStorage } from "../../api/api";
 import { apiHost } from "../../api/constants";
+import { setAuth } from "../slices/auth";
+
+const baseQueryWithReauth = async (args, api, extraOptions) => {
+  const baseQuery = fetchBaseQuery({
+    baseUrl: apiHost,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.access_token;
+      // console.debug('Использую токен из стора', { token })
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  });
+
+  const result = await baseQuery(args, api, extraOptions);
+  // console.debug('Результат первого запроса', { result })
+
+  if (result?.error?.status !== 401) {
+    return result;
+  }
+
+  const forceLogout = () => {
+    console.debug("Принудительная авторизация!");
+    api.dispatch(setAuth(null));
+    window.location.navigate("/login");
+  };
+
+  const { auth } = api.getState();
+  // console.debug('Данные пользователя в сторе', { auth })
+
+  if (!auth.refresh_token) {
+    return forceLogout();
+  }
+
+  const refreshResult = await baseQuery(
+    {
+      url: "/auth/login",
+      method: "PUT",
+      body: {
+        refresh: auth.refresh_token,
+      },
+    },
+    api,
+    extraOptions
+  );
+
+  // console.debug('Результат запроса на обновление токена', { refreshResult })
+  if (!refreshResult.data.access_token) {
+    return forceLogout();
+  }
+
+  api.dispatch(setAuth({ ...auth, token: refreshResult.data.access_token }));
+  const retryResult = await baseQuery(args, api, extraOptions);
+  if (retryResult?.error?.status === 401) {
+    return forceLogout();
+  }
+  return retryResult;
+};
 
 export const setUserId = (userId) => {
   return {
@@ -16,14 +75,7 @@ const DATA_TAG = {
 
 export const userApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: apiHost,
-    prepareHeaders: (headers) => {
-      const token = getTokenFromLocalStorage();
-      console.debug("Токен из стора", { token });
-      return headers;
-    },
-  }),
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     getAllAds: builder.query({
       query: () => "/ads?sorting=new",

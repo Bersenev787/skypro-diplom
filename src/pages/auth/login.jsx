@@ -51,7 +51,7 @@ export const Login = ({ isLoginMode = true }) => {
     <S.ContainerEnter>
       <S.ModalBlock>
         <S.ModalFormLogin id="formLogIn" action="#">
-          <S.ModalLogo>
+          <S.ModalLogo to="/">
             <S.ModalLogoImg src={img} alt="logo" />
           </S.ModalLogo>
           <S.ModalInputLogin
