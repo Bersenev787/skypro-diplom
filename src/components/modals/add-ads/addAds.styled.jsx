@@ -372,7 +372,7 @@ export const FormNewArtPSpan = styled.span`
 `;
 
 export const FormNewArtBarImg = styled.div`
-  width: 500px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -383,9 +383,7 @@ export const FormNewArtBarImg = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 10px;
   overflow: hidden;
   @media screen and (max-width: 600px) {

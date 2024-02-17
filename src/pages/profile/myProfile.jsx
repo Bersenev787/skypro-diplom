@@ -55,6 +55,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
       uploadUserAvatar(formData, getTokenFromLocalStorage())
         .then((data) => {
           setUserProfile(data);
+          setDisabledButton(true);
         })
         .catch((error) => {
           console.error("Error fetching workout data:", error);
@@ -103,7 +104,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
     setDisabledButton(
       isProfileValuesEqual(userProfileValues, currentProfileValues)
     );
-  }, [userProfile, currentProfile, isDisabledButton]);
+  }, [userProfile, currentProfile, isDisabledButton, img]);
 
   return (
     <>
@@ -149,7 +150,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                             handleAvatarUpload(file);
                           }
                         }}
-                      ></T.SettingsImgInput>
+                      />
                       <T.SettingsChangePhoto onClick={handleAvatarClick}>
                         Заменить
                       </T.SettingsChangePhoto>

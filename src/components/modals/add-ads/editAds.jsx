@@ -61,7 +61,8 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
   };
 
   useEffect(() => {
-    if (isError.status === 401) {
+    console.log(isError);
+    if (isError) {
       updateToken();
       editAdsRequest({
         token: getTokenFromLocalStorage(),
@@ -89,7 +90,8 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
   };
 
   const handleDeleteImage = async (image) => {
-    deleteImages({
+    await updateToken();
+    await deleteImages({
       token: getTokenFromLocalStorage(),
       image: image,
       id: ads.id,
@@ -159,76 +161,23 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
                         />
                       </T.FormNewArtImg>
                     ))}
-                  <T.FormNewArtImg>
-                    <T.FormNewArtImgCover
-                      type="file"
-                      id="upload-photo"
-                      accept="image/*"
-                      onChange={(event) => {
-                        const file = event.target.files?.[0];
-                        if (file) {
-                          setImages(file);
-                          handleImgUpload(file);
-                        }
-                      }}
-                    ></T.FormNewArtImgCover>
-                  </T.FormNewArtImg>
-                  <T.FormNewArtImg>
-                    <T.FormNewArtImgCover
-                      type="file"
-                      id="upload-photo"
-                      accept="image/*"
-                      onChange={(event) => {
-                        const file = event.target.files?.[0];
-                        if (file) {
-                          setImages(file);
-                          handleImgUpload(file);
-                        }
-                      }}
-                    ></T.FormNewArtImgCover>
-                  </T.FormNewArtImg>
-                  <T.FormNewArtImg>
-                    <T.FormNewArtImgCover
-                      type="file"
-                      id="upload-photo"
-                      accept="image/*"
-                      onChange={(event) => {
-                        const file = event.target.files?.[0];
-                        if (file) {
-                          setImages(file);
-                          handleImgUpload(file);
-                        }
-                      }}
-                    ></T.FormNewArtImgCover>
-                  </T.FormNewArtImg>
-                  <T.FormNewArtImg>
-                    <T.FormNewArtImgCover
-                      type="file"
-                      id="upload-photo"
-                      accept="image/*"
-                      onChange={(event) => {
-                        const file = event.target.files?.[0];
-                        if (file) {
-                          setImages(file);
-                          handleImgUpload(file);
-                        }
-                      }}
-                    ></T.FormNewArtImgCover>
-                  </T.FormNewArtImg>
-                  <T.FormNewArtImg>
-                    <T.FormNewArtImgCover
-                      type="file"
-                      id="upload-photo"
-                      accept="image/*"
-                      onChange={(event) => {
-                        const file = event.target.files?.[0];
-                        if (file) {
-                          setImages(file);
-                          handleImgUpload(file);
-                        }
-                      }}
-                    ></T.FormNewArtImgCover>
-                  </T.FormNewArtImg>
+
+                  {data.images?.length < 5 && (
+                    <T.FormNewArtImg>
+                      <T.FormNewArtImgCover
+                        type="file"
+                        id="upload-photo"
+                        accept="image/*"
+                        onChange={(event) => {
+                          const file = event.target.files?.[0];
+                          if (file) {
+                            setImages(file);
+                            handleImgUpload(file);
+                          }
+                        }}
+                      />
+                    </T.FormNewArtImg>
+                  )}
                 </T.FormNewArtBarImg>
               </T.FormNewArtBlock>
               <T.FormNewArtBlockPrice>
