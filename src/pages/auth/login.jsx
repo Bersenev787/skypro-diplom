@@ -25,17 +25,19 @@ export const Login = ({ isLoginMode = true }) => {
     }
     setLogin(true);
     try {
-      await loginUser(email, password).then((dat) => {
+      await loginUser(email, password).then((data) => {
+        console.log("data", data);
         dispatch(
           setAuth({
             email: email,
             password: password,
+            id: data.id,
             user: JSON.parse(localStorage.getItem("user")),
           })
         );
         navigate("/");
-        saveTokenToLocalStorage(dat);
-        saveUserIdToState(dat);
+        saveTokenToLocalStorage(data);
+        saveUserIdToState(data);
       });
     } catch (erro) {
       setError(erro.message);

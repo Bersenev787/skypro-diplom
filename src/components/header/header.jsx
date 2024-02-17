@@ -24,6 +24,7 @@ export const HeaderAuth = ({ ads, setAds }) => {
     removeTokenFromLocalStorage();
     navigate("/");
   };
+
   const [openFormAddAds, setOpenFormAddAds] = useState(false);
   return (
     <>
@@ -47,7 +48,11 @@ export const HeaderAuth = ({ ads, setAds }) => {
             <S.HeaderBtnPutAd onClick={() => setOpenFormAddAds(true)}>
               Разместить объявление
             </S.HeaderBtnPutAd>
-            <S.HeaderBtnPutAd onClick={() => navigate("/profile/me")}>
+            <S.HeaderBtnPutAd
+              onClick={() => {
+                navigate("/profile/me", { replace: true });
+              }}
+            >
               Личный кабинет
             </S.HeaderBtnPutAd>
             <S.HeaderBtnPutAd onClick={() => handleClickLogout()}>

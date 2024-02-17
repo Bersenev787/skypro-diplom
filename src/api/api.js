@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { apiHost } from "./constants";
 
 export const saveTokenToLocalStorage = (token) => {
@@ -21,7 +20,7 @@ export const updateToken = async () => {
     const data = await getToken(token);
     saveTokenToLocalStorage(data);
   } catch (error) {
-    throw new Error(`Ошибка при обновлении токена:`);
+    throw new Error(error);
   }
 };
 
@@ -39,7 +38,6 @@ export async function getUser(token) {
 
   if (response.status === 401) {
     updateToken();
-    <Link to="login" />;
     return getUser(getTokenFromLocalStorage());
   }
 

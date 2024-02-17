@@ -4,7 +4,6 @@ import { Footer } from "../../components/footer/footer";
 import { HeaderAuth, Header } from "../../components/header/header";
 import { MainMenu } from "../../components/menu/menu";
 import noAvatar from "../../img/myprofile.png";
-import { useAuthSelector } from "../../store/slices/auth";
 import * as S from "../../App.style";
 import * as T from "./sellerProfile.style";
 import { apiHost } from "../../api/constants";
@@ -24,7 +23,7 @@ export const SellerProfile = ({ userProfile, isLoading }) => {
     <>
       {auth?.isAuth ? <HeaderAuth /> : <Header />}
       <S.Main>
-        {isLoading ? (
+        {!isLoading ? (
           <T.MainContainer>
             <T.MainCenterBlock>
               <MainMenu />

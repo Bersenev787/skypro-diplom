@@ -85,10 +85,10 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
     }
 
     if (
-      !nameRef.current.value.length &&
-      !surnameRef.current.value.length &&
-      !cityRef.current.value.length &&
-      !phoneRef.current.value.length
+      !nameRef.current?.value.length &&
+      !surnameRef.current?.value.length &&
+      !cityRef.current?.value.length &&
+      !phoneRef.current?.value.length
     ) {
       return true;
     }
@@ -112,7 +112,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
       )}
       <HeaderAuth />
       <S.Main>
-        {isLoading ? (
+        {!isLoading ? (
           <T.MainContainer>
             <T.MainCenterBlock>
               <MainMenu />

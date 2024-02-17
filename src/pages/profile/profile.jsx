@@ -6,57 +6,57 @@ import { NotFound } from "../not-found/notFound";
 import { MyProfile } from "./myProfile";
 import { SellerProfile } from "./sellerProfile";
 
-export const Profile = (isLoading) => {
+export const Profile = ({ isLoading, user }) => {
   const useAuth = useAuthSelector();
+  // const useAuth = JSON.parse(localStorage.getItem("auth"));
   const [userProfile, setUserProfile] = useState(null);
   const userID = useParams().id;
-  const [pageMode, setPageMode] = useState("guest");
+  const [pageMode, setPageMode] = useState();
 
-  const fetchData = () => {
-    if (userID === "me" || parseInt(userID) === useAuth) {
-      if (useAuth) {
-        const token = getTokenFromLocalStorage();
-
-        getUser(token)
-          .then((data) => {
-            setUserProfile(data);
-            setPageMode("my-profile");
-          })
-          .catch(() => {
-            setPageMode("error");
-          });
-      } else {
+  const fetchMyProfileData = () => {
+    const token = getTokenFromLocalStorage();
+    getUser(token)
+      .then((data) => {
+        setUserProfile(data);
+        setPageMode("my-profile");
+      })
+      .catch(() => {
         setPageMode("error");
-      }
-    } else {
-      getAllUsers()
-        .then((data) => {
-          if (data) {
-            const findUser = (arrUsers) => {
-              for (let i = 0; i < arrUsers?.length; i++) {
-                if (arrUsers[i].id === parseInt(userID)) {
-                  setPageMode("guest");
-                  return arrUsers[i];
-                }
-              }
-              setPageMode("error");
-              return null;
-            };
+      });
+  };
 
-            setUserProfile(findUser(data));
+  const fetchGuestProfileData = () => {
+    getAllUsers()
+      .then((data) => {
+        if (data) {
+          const foundUser = data.find((user) => user.id === parseInt(userID));
+          if (foundUser) {
+            setUserProfile(foundUser);
+            setPageMode("guest");
+          } else {
+            setPageMode("error");
           }
-        })
-        .catch(() => {
-          setPageMode("error");
-        });
-    }
+        }
+      })
+      .catch(() => {
+        setPageMode("error");
+      });
   };
 
   useEffect(() => {
-    if (!userProfile) {
-      fetchData();
+    if (userProfile && userProfile?.id !== useAuth.id && userID === "me") {
+      setUserProfile(null);
     }
-  }, [userID, useAuth]);
+
+    if (!userProfile) {
+      if (userID === "me" && useAuth) {
+        fetchMyProfileData();
+      } else {
+        fetchGuestProfileData();
+      }
+    }
+  }, [userID, useAuth, userProfile, pageMode, user]);
+
   return (
     <>
       {pageMode === "my-profile" && userProfile && (

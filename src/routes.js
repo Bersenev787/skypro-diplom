@@ -19,7 +19,14 @@ export const AppRoutes = ({ ads, isLoading, setAds }) => {
       />
       <Route
         path="/profile/:id"
-        element={<Profile ads={ads} setAds={setAds} isLoading={isLoading} />}
+        element={
+          <Profile
+            ads={ads}
+            setAds={setAds}
+            isLoading={isLoading}
+            user={null}
+          />
+        }
       />
       <Route path="/ads/:id" element={<Article ads={ads} setAds={setAds} />} />
       <Route
