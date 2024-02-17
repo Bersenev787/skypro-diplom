@@ -89,8 +89,8 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
     }
   };
 
-  const handleDeleteImage = async (image) => {
-    await updateToken();
+  const handleDeleteImage = async (event, image) => {
+    event.preventDefault();
     await deleteImages({
       token: getTokenFromLocalStorage(),
       image: image,
@@ -151,7 +151,7 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
                     data.images.map((image, index) => (
                       <T.FormNewArtImg key={index}>
                         <T.DeleteImageBtn
-                          onClick={() => handleDeleteImage(image)}
+                          onClick={(event) => handleDeleteImage(event, image)}
                         >
                           x
                         </T.DeleteImageBtn>
