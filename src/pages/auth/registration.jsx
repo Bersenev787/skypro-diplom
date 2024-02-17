@@ -48,19 +48,19 @@ export const Registration = ({ isLoginMode = false }) => {
         name,
         city,
         lastName
-      ).then((dat) => {
+      ).then((data) => {
         dispatch(
           setAuth({
-            email: dat.email,
+            email: data.email,
             id: 0,
-            name: dat.name,
+            name: data.name,
             surname: "",
-            password: dat.password,
-            city: dat.city,
+            password: data.password,
+            city: data.city,
             role: "user",
           })
         );
-        saveTokenToLocalStorage(dat);
+        saveTokenToLocalStorage(data);
         saveUserIdToState(false);
         navigate("/login");
       });

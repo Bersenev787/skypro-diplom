@@ -64,7 +64,6 @@ export const ModalFormLogin = styled.form`
 
 export const ModalFormReg = styled.form`
   width: 366px;
-  height: 647px;
   background-color: #ffffff;
   border-radius: 12px;
   display: -webkit-box;
@@ -94,6 +93,7 @@ export const ModalLogo = styled.div`
   height: 21px;
   margin-bottom: 34px;
   background-color: transparent;
+
   @media screen and (max-width: 768px) {
     width: 120px;
     height: 18px;
@@ -104,6 +104,7 @@ export const ModalLogo = styled.div`
 export const ModalLogoImg = styled.img`
   width: 140px;
   height: auto;
+
   @media screen and (max-width: 768px) {
     width: 120px;
     height: auto;
@@ -118,6 +119,7 @@ export const ModalInputLogin = styled.input`
   border-bottom: 1px solid #d0cece;
   padding: 8px 1px;
   margin-bottom: 30px;
+
   &::-webkit-input-placeholder {
     font-style: normal;
     font-weight: 400;
@@ -126,6 +128,7 @@ export const ModalInputLogin = styled.input`
     letter-spacing: -0.05px;
     color: #d0cece;
   }
+
   &:-ms-input-placeholder {
     font-style: normal;
     font-weight: 400;
@@ -134,6 +137,7 @@ export const ModalInputLogin = styled.input`
     letter-spacing: -0.05px;
     color: #d0cece;
   }
+
   &::-ms-input-placeholder {
     font-style: normal;
     font-weight: 400;
@@ -142,6 +146,7 @@ export const ModalInputLogin = styled.input`
     letter-spacing: -0.05px;
     color: #d0cece;
   }
+
   &::placeholder {
     font-style: normal;
     font-weight: 400;
@@ -150,12 +155,14 @@ export const ModalInputLogin = styled.input`
     letter-spacing: -0.05px;
     color: #d0cece;
   }
+
   @media screen and (max-width: 768px) {
     width: 100%;
     border: 1px solid #d0cece;
     padding: 9px 17px;
     border-radius: 30px;
     margin-bottom: 14px;
+
     &::-webkit-input-placeholder {
       font-style: normal;
       font-weight: 400;
@@ -163,6 +170,7 @@ export const ModalInputLogin = styled.input`
       line-height: 21px;
       color: #b3b3b3;
     }
+
     &:-ms-input-placeholder {
       font-style: normal;
       font-weight: 400;
@@ -170,6 +178,7 @@ export const ModalInputLogin = styled.input`
       line-height: 21px;
       color: #b3b3b3;
     }
+
     &::-ms-input-placeholder {
       font-style: normal;
       font-weight: 400;
@@ -177,6 +186,7 @@ export const ModalInputLogin = styled.input`
       line-height: 21px;
       color: #b3b3b3;
     }
+
     &::placeholder {
       font-style: normal;
       font-weight: 400;
@@ -474,6 +484,7 @@ export const ModalBtnReg = styled.button`
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  flex-shrink: 0;
   &:hover {
     background-color: #0080c1;
   }

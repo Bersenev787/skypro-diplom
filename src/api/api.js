@@ -99,6 +99,10 @@ export async function registerUser(
     throw new Error("Сервер сломался");
   }
 
+  if (!response.ok) {
+    throw new Error("Неверно введена почта, попробуйте еще раз");
+  }
+
   const data = await response.json();
   return data;
 }
