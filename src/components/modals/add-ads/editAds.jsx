@@ -61,7 +61,6 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
   };
 
   useEffect(() => {
-    console.log(isError);
     if (isError) {
       updateToken();
       editAdsRequest({
