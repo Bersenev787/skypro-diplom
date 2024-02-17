@@ -8,8 +8,7 @@ import { Article } from "./pages/article/article";
 import { Profile } from "./pages/profile/profile";
 
 export const AppRoutes = ({ ads, isLoading, setAds }) => {
-  console.log(localStorage.getItem("token"));
-  const { access_token } = JSON.parse(localStorage.getItem("token"));
+  const token = JSON.parse(localStorage.getItem("token"));
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
@@ -18,7 +17,9 @@ export const AppRoutes = ({ ads, isLoading, setAds }) => {
         path="/"
         element={<MainPage ads={ads} isLoading={isLoading} setAds={setAds} />}
       />
-      <Route element={<ProtectedRoute isAllowed={Boolean(access_token)} />}>
+      <Route
+        element={<ProtectedRoute isAllowed={Boolean(token?.access_token)} />}
+      >
         <Route
           path="/profile/:id"
           element={<Profile ads={ads} setAds={setAds} isLoading={isLoading} />}

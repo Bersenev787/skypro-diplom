@@ -14,7 +14,7 @@ export const SellerProfile = ({ userProfile, isLoading }) => {
   const clickShowPhone = () => {
     setShowPhone(true);
   };
-  const auth = useAuthSelector();
+  const auth = JSON.parse(localStorage.getItem("auth"));
 
   const userProfilePhone = () => {
     return userProfile?.phone || "No phone number";
@@ -22,7 +22,7 @@ export const SellerProfile = ({ userProfile, isLoading }) => {
 
   return (
     <>
-      {auth.isAuth === true ? <HeaderAuth /> : <Header />}
+      {auth?.isAuth ? <HeaderAuth /> : <Header />}
       <S.Main>
         {isLoading ? (
           <T.MainContainer>

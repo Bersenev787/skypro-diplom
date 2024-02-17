@@ -309,7 +309,7 @@ export const FormNewArtArea = styled.textarea`
 export const FormNewArtBtnPub = styled.button`
   width: 181px;
   height: 50px;
-  background: #d9d9d9;
+  background-color: #009ee4;
   border: 1px solid #d9d9d9;
   border-radius: 6px;
   font-size: 16px;
@@ -318,6 +318,12 @@ export const FormNewArtBtnPub = styled.button`
 
   &:hover {
     background-color: #0080c1;
+  }
+
+  &:disabled {
+    background: #d9d9d9;
+    border: 1px solid #d9d9d9;
+    cursor: not-allowed;
   }
 
   @media screen and (max-width: 600px) {

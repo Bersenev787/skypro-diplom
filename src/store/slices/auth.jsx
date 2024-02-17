@@ -33,7 +33,7 @@ const authSlice = createSlice({
       state.token = payload.token;
       state.isAuth = true;
 
-      localStorage.setItem("auth", JSON.stringify(state));
+      localStorage.setItem("auth", JSON.stringify({ ...state }));
     },
   },
 });

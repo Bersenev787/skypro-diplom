@@ -14,7 +14,7 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
   const [addComment, { data, isLoading }] = useAddCommentMutation(id);
   const [newComment, setNewComment] = useState("");
   const [error, setError] = useState(null);
-  const auth = useAuthSelector();
+  const auth = JSON.parse(localStorage.getItem("auth"));
   const [saveButton, setSaveButton] = useState(true);
 
   const handleAddComment = async (event) => {
@@ -50,7 +50,7 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
                 <T.ModalBtnCloseLine onClick={closeForm}></T.ModalBtnCloseLine>
               </T.ModalBtnClose>
               <T.ModalInner>
-                {auth.isAuth === false ? (
+                {!auth?.isAuth ? (
                   <T.FormNewArt>
                     Для того чтобы оставить отзыв,{" "}
                     <Link to={"/login"}>авторизуйтесь </Link>
@@ -71,6 +71,7 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
                     </T.FormNewArtBlock>
                     <T.FormNewArtBtnPub
                       id="btnPublish"
+                      disabled={!newComment?.length}
                       onClick={(event) => handleAddComment(event)}
                     >
                       Опубликовать

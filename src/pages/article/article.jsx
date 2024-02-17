@@ -23,7 +23,7 @@ export const Article = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetAdsByIdQuery(id);
   const [showPhone, setShowPhone] = useState(false);
-  const auth = useAuthSelector();
+  const auth = JSON.parse(localStorage.getItem("auth"));
   const [openFormEditAds, setOpenFormEditAds] = useState(false);
   const [openFormComments, setOpenFormComments] = useState(false);
   const [deleteAds, { isError }] = useDeleteAdsMutation(id);
@@ -104,11 +104,7 @@ export const Article = () => {
           setAdsComments={setAdsComments}
         />
       )}
-      {auth.isAuth === true ? (
-        <HeaderAuth ads={data} setAds={currAds} />
-      ) : (
-        <Header />
-      )}
+      {auth?.isAuth ? <HeaderAuth ads={data} setAds={currAds} /> : <Header />}
       <S.Main>
         <T.MainContainer>
           {isLoading ? (
@@ -176,7 +172,7 @@ export const Article = () => {
                         </T.ArticleLink>
                       </T.ArticleInfo>
                       <T.ArticlePrice>{data.price} ₽</T.ArticlePrice>
-                      {auth.email === data.user.email ? (
+                      {auth?.email === data.user.email ? (
                         <T.ArticleBtnBlock>
                           <T.ArticleBtnReduct
                             onClick={() => setOpenFormEditAds(true)}

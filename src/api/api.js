@@ -12,6 +12,7 @@ export const getTokenFromLocalStorage = () => {
 
 export const removeTokenFromLocalStorage = () => {
   localStorage.removeItem("token");
+  localStorage.removeItem("auth");
 };
 
 export const updateToken = async () => {

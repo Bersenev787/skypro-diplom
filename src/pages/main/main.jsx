@@ -6,12 +6,11 @@ import img from "../../img/logo.png";
 import imgMob from "../../img/logo-mob.png";
 import * as S from "./main.style";
 import noPhoto from "../../img/no-photo.png";
-import { useAuthSelector } from "../../store/slices/auth";
 import { apiHost } from "../../api/constants";
 
 export const MainPage = ({ ads, setAds, isLoading }) => {
   const [searchType, setSearchType] = useState("");
-  const auth = useAuthSelector();
+  const auth = JSON.parse(localStorage.getItem("auth"));
 
   const filteredAds = () => {
     let filterAds = ads;
@@ -25,13 +24,11 @@ export const MainPage = ({ ads, setAds, isLoading }) => {
 
   const filterAd = filteredAds();
 
+  console.log(auth?.isAuth);
+
   return (
     <>
-      {auth.isAuth === true ? (
-        <HeaderAuth ads={ads} setAds={setAds} />
-      ) : (
-        <Header />
-      )}
+      {auth?.isAuth ? <HeaderAuth ads={ads} setAds={setAds} /> : <Header />}
       <S.MainSearch>
         <S.SearchLogoLink href="#" target="_blank">
           <Link to="/">

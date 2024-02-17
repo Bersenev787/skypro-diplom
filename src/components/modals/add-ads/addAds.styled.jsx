@@ -611,6 +611,7 @@ export const FormNewArtBtnPub = styled.button`
   &:disabled {
     background: #d9d9d9;
     border: 1px solid #d9d9d9;
+    cursor: not-allowed;
   }
   @media screen and (max-width: 600px) {
     margin-top: 10px;
