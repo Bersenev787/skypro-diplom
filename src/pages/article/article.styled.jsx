@@ -388,10 +388,11 @@ export const AuthorImg = styled.div`
 `;
 export const AuthorImgImg = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   -o-object-fit: cover;
   object-fit: cover;
+  border-radius: 50%;
 `;
 
 export const AuthorCont = styled.div`

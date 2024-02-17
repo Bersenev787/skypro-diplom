@@ -8,7 +8,7 @@ export const AddAds = ({ setOpenFormAddAds }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [saveButtonActive, setSaveButtonActive] = useState(false);
+  const [isSaveButtonActive, setSaveButtonActive] = useState(false);
   const [error, setError] = useState(null);
 
   const closeForm = () => {
@@ -44,6 +44,13 @@ export const AddAds = ({ setOpenFormAddAds }) => {
     }).then(() => closeForm());
   };
 
+  const switchButtonActive = () => {
+    if (title.length || description.length || price.length) {
+      return setSaveButtonActive(true);
+    }
+    return setSaveButtonActive(false);
+  };
+
   useEffect(() => {
     if (isError.status === 401) {
       updateToken();
@@ -52,8 +59,9 @@ export const AddAds = ({ setOpenFormAddAds }) => {
         ads: { title: title, description: description, price: price },
       });
     }
-    setSaveButtonActive(true);
-  }, [isError]); // eslint-disable-line
+
+    switchButtonActive();
+  }, [isError, title, description, price]); // eslint-disable-line
 
   return (
     <T.Wrapper>
@@ -72,7 +80,7 @@ export const AddAds = ({ setOpenFormAddAds }) => {
                   name="name"
                   id="formName"
                   placeholder="Введите название"
-                  onChange={handleAdTitleChange}
+                  onChange={(event) => handleAdTitleChange(event)}
                 />
               </T.FormNewArtBlock>
               <T.FormNewArtBlock>
@@ -99,7 +107,7 @@ export const AddAds = ({ setOpenFormAddAds }) => {
               {error && <T.Error>{error}</T.Error>}
               <T.FormNewArtBtnPub
                 id="btnPublish"
-                disabled={!saveButtonActive}
+                disabled={!isSaveButtonActive}
                 onClick={(event) => handleClickPublic(event)}
               >
                 Опубликовать

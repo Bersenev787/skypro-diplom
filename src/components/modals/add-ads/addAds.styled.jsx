@@ -501,7 +501,6 @@ export const FormNewArtInputPrice = styled.input`
   font-size: 16px;
   line-height: 1;
   &::-webkit-input-placeholder {
-    text-align: end;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -509,7 +508,6 @@ export const FormNewArtInputPrice = styled.input`
     color: #000000;
   }
   &:-ms-input-placeholder {
-    text-align: end;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -517,7 +515,6 @@ export const FormNewArtInputPrice = styled.input`
     color: #000000;
   }
   ::-ms-input-placeholder {
-    text-align: end;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -525,7 +522,6 @@ export const FormNewArtInputPrice = styled.input`
     color: #000000;
   }
   &::placeholder {
-    text-align: end;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -603,14 +599,18 @@ export const FormNewArtBtnPub = styled.button`
   margin-top: 10px;
   width: 181px;
   height: 50px;
-  background: #d9d9d9;
-  border: 1px solid #d9d9d9;
+  background-color: #009ee4;
+  border: 1px solid #009ee4;
   border-radius: 6px;
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
   &:hover {
     background-color: #0080c1;
+  }
+  &:disabled {
+    background: #d9d9d9;
+    border: 1px solid #d9d9d9;
   }
   @media screen and (max-width: 600px) {
     margin-top: 10px;

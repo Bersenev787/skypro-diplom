@@ -28,6 +28,8 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
 
   const ads = useMemo(() => data || [], [data]);
 
+  console.log(currAds);
+
   const handleAdTitleChange = (event) => {
     setTitle(event.target.value);
     setSaveButtonActive(true);
@@ -120,8 +122,11 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
                   type="text"
                   name="name"
                   id="formName"
-                  placeholder={ads.title}
-                  onChange={handleAdTitleChange}
+                  value={title}
+                  placeholder="Input title"
+                  onChange={(event) => {
+                    handleAdTitleChange(event);
+                  }}
                 />
               </T.FormNewArtBlock>
               <T.FormNewArtBlock>
@@ -131,7 +136,8 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
                   id="formArea"
                   cols="auto"
                   rows="10"
-                  placeholder={ads.description}
+                  value={description}
+                  placeholder="Input description"
                   onChange={handleAdDescriptionChange}
                 ></T.FormNewArtArea>
               </T.FormNewArtBlock>
@@ -234,7 +240,8 @@ export const EditAds = ({ setOpenFormEditAds, setCurrAds, currAds }) => {
                   name="price"
                   id="formName"
                   accept="image/*"
-                  placeholder={data?.price}
+                  value={price}
+                  placeholder="Input price"
                   onChange={handleAdPriceChange}
                 />
                 <T.FormNewArtInputPriceCover></T.FormNewArtInputPriceCover>

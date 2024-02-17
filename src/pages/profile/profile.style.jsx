@@ -107,6 +107,7 @@ export const Img = styled.img`
   display: block;
   -o-object-fit: cover;
   object-fit: cover;
+  border-radius: 50%;
 `;
 
 export const SettingsChangePhoto = styled.button`
@@ -162,6 +163,10 @@ export const SettingsFormInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   padding: 13px 19px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
   &::-webkit-input-placeholder {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.3);

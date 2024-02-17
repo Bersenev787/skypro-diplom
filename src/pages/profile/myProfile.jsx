@@ -117,8 +117,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
             <T.MainCenterBlock>
               <MainMenu />
               <T.MainH2>
-                Здравствуйте,&nbsp;
-                {userProfile.name ? userProfile.name : userProfile.email}!
+                Здравствуйте, {userProfile.name || userProfile.email}!
               </T.MainH2>
               <T.MainProfile>
                 <T.ProfileContent>
@@ -165,21 +164,23 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                             id="settings-name"
                             name="name"
                             type="text"
-                            placeholder={userProfile.name}
+                            value={currentProfile.name}
+                            placeholder="Input name"
                             ref={nameRef}
                             onChange={(event) => handleName(event)}
                           />
                         </T.SettingsDiv>
 
                         <T.SettingsDiv>
-                          <T.SettingsFormLabel htmlFor="name">
+                          <T.SettingsFormLabel htmlFor="surname">
                             Фамилия
                           </T.SettingsFormLabel>
                           <T.SettingsFormInput
                             id="settings-name"
                             name="surname"
                             type="text"
-                            placeholder={userProfile.surname}
+                            value={currentProfile.surname}
+                            placeholder="Input surname"
                             ref={surnameRef}
                             onChange={(event) => {
                               handleSurname(event);
@@ -195,7 +196,8 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                             id="settings-city"
                             name="city"
                             type="text"
-                            placeholder={userProfile.city}
+                            value={currentProfile.city}
+                            placeholder="Input city"
                             ref={cityRef}
                             onChange={(event) => {
                               handleCity(event);
@@ -212,7 +214,8 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                             name="phone"
                             type="tel"
                             width={614}
-                            placeholder={userProfile.phone}
+                            value={currentProfile.phone}
+                            placeholder="Input phone"
                             ref={phoneRef}
                             onChange={(event) => {
                               handlePhone(event);
@@ -224,7 +227,6 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
                           disabled={isDisabledButton}
                           onClick={(event) => handleSaveChanges(event)}
                         >
-                          {isDisabledButton}
                           Сохранить
                         </T.SettingsBtn>
                         <T.SettingsBtn

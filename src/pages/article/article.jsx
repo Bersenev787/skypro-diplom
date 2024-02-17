@@ -175,7 +175,7 @@ export const Article = () => {
                           {commentsTitle()}
                         </T.ArticleLink>
                       </T.ArticleInfo>
-                      <T.ArticlePrice>{data.price}.₽</T.ArticlePrice>
+                      <T.ArticlePrice>{data.price} ₽</T.ArticlePrice>
                       {auth.email === data.user.email ? (
                         <T.ArticleBtnBlock>
                           <T.ArticleBtnReduct
@@ -215,7 +215,7 @@ export const Article = () => {
                           <Link to={`/profile/${data.user.id}`}>
                             <T.AuthorName>{data.user.name}</T.AuthorName>
                             <T.AuthorAbout>
-                              Продает товары с&nbsp;
+                              Продает товары с{" "}
                               {new Date(data.user.sells_from).toLocaleString(
                                 "ru",
                                 {
