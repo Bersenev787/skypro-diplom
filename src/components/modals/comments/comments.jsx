@@ -3,7 +3,6 @@ import noAvatar from "../../../img/myprofile.png";
 import { useAddCommentMutation } from "../../../store/services/auth";
 import { useEffect, useState } from "react";
 import { getTokenFromLocalStorage } from "../../../api/api";
-import { useAuthSelector } from "../../../store/slices/auth";
 import { Link, useParams } from "react-router-dom";
 
 export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
@@ -22,22 +21,26 @@ export const Comments = ({ setOpenFormComments, comments, setAdsComments }) => {
     if (!newComment) {
       setError("Пожалуйста, введите отзыв");
     }
-    await addComment({
-      token: getTokenFromLocalStorage(),
-      text: newComment,
-      id: id,
-    }).then(() => {
+
+    try {
+      await addComment({
+        token: getTokenFromLocalStorage(),
+        text: newComment,
+        id: id,
+      });
       closeForm();
-    });
-    setNewComment("");
-    setSaveButton(true);
+      setNewComment("");
+      setSaveButton(true);
+    } catch (error) {
+      console.error("Ошибка при добавлении комментария", error);
+    }
   };
 
   useEffect(() => {
     if (newComment !== "") {
-      setAdsComments([data, ...comments]);
+      setAdsComments((prevComments) => [data, ...prevComments]);
     }
-  }, [data]); // eslint-disable-line
+  }, [data, setAdsComments]);
 
   return (
     <T.Wrapper>

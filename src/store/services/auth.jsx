@@ -113,7 +113,14 @@ export const userApi = createApi({
     }),
     getAllComments: builder.query({
       query: (id) => `/ads/${id}/comments`,
-      invalidatesTags: ["CMT"],
+      // invalidatesTags: ["CMT"],
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "CMT", id })),
+              { type: "CMT", id: "LIST" },
+            ]
+          : [{ type: "CMT", id: "LIST" }],
     }),
     addComment: builder.mutation({
       query: ({ token, text, id }) => ({

@@ -12,7 +12,6 @@ import {
   useDeleteAdsMutation,
   useGetAllCommentsQuery,
 } from "../../store/services/auth";
-import { useAuthSelector } from "../../store/slices/auth";
 import { EditAds } from "../../components/modals/add-ads/editAds";
 import { Comments } from "../../components/modals/comments/comments";
 import { getTokenFromLocalStorage } from "../../api/api";
@@ -32,6 +31,7 @@ export const Article = () => {
   const [saveButton, setSaveButton] = useState(true);
   const [currAds, setCurrAds] = useState(null);
   const navigate = useNavigate();
+  const [commentsCount, setCommentsCount] = useState(0);
 
   const clickShowPhone = () => {
     if (data.user.phone) {
@@ -61,8 +61,9 @@ export const Article = () => {
   useEffect(() => {
     if (adsComments) {
       setAdsComments(adsComments);
+      setCommentsCount(adsComments?.length);
     }
-  }, [adsComments]);
+  }, [adsComments, setAdsComments, commentsCount, comments]);
 
   const [selectedCard, setSelectedCard] = useState(null);
   const [ind, setInd] = useState(null);
@@ -73,15 +74,15 @@ export const Article = () => {
   };
 
   const commentsTitle = () => {
-    if (adsComments?.length === 1) {
+    if (commentsCount === 1) {
       return "отзыв";
     }
 
-    if (adsComments?.length > 1 && adsComments?.length < 5) {
+    if (commentsCount > 1 && commentsCount < 5) {
       return "отзыва";
     }
 
-    if (adsComments?.length < 5) {
+    if (commentsCount < 5) {
       return "отзывов";
     }
 
@@ -167,8 +168,7 @@ export const Article = () => {
                         <T.ArticleLink
                           onClick={() => setOpenFormComments(true)}
                         >
-                          {adsComments ? adsComments.length : "..."}{" "}
-                          {commentsTitle()}
+                          {commentsCount} {commentsTitle()}
                         </T.ArticleLink>
                       </T.ArticleInfo>
                       <T.ArticlePrice>{data.price} ₽</T.ArticlePrice>
