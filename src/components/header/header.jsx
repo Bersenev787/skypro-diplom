@@ -20,10 +20,6 @@ export const Header = () => {
 
 export const HeaderAuth = ({ ads, setAds, handleClickLogout }) => {
   const navigate = useNavigate();
-  // const handleClickLogout = () => {
-  //   removeTokenFromLocalStorage();
-  //   navigate("/", { replace: true });
-  // };
 
   const [openFormAddAds, setOpenFormAddAds] = useState(false);
   return (
@@ -82,12 +78,6 @@ export const MainHeader = ({ ads, setAds }) => {
     updateAuthenticationStatus();
     navigate("/", { replace: true });
   };
-
-  // useEffect(() => {
-  //   // if (!auth?.isAuth) {
-  //   updateAuthenticationStatus();
-  //   // }
-  // }, [auth]);
 
   return isUserAuthenticated ? (
     <HeaderAuth
