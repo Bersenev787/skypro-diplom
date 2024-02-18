@@ -113,7 +113,6 @@ export const userApi = createApi({
     }),
     getAllComments: builder.query({
       query: (id) => `/ads/${id}/comments`,
-      // invalidatesTags: ["CMT"],
       providesTags: (result) =>
         result
           ? [

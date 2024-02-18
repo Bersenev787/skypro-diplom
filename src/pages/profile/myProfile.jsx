@@ -1,5 +1,5 @@
 import { Footer } from "../../components/footer/footer";
-import { HeaderAuth } from "../../components/header/header";
+import { HeaderAuth, MainHeader } from "../../components/header/header";
 import { MainMenu } from "../../components/menu/menu";
 import * as S from "../../App.style";
 import * as T from "./profile.style";
@@ -111,7 +111,7 @@ export const MyProfile = ({ userProfile, setUserProfile, isLoading }) => {
       {openFormChangePassword && (
         <EditPassword setOpenFormChangePassword={setOpenFormChangePassword} />
       )}
-      <HeaderAuth />
+      <MainHeader />
       <S.Main>
         {!isLoading ? (
           <T.MainContainer>

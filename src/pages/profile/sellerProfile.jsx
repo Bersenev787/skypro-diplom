@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ContentCard } from "../../components/cards/cards";
 import { Footer } from "../../components/footer/footer";
-import { HeaderAuth, Header } from "../../components/header/header";
+import { MainHeader } from "../../components/header/header";
 import { MainMenu } from "../../components/menu/menu";
 import noAvatar from "../../img/myprofile.png";
 import * as S from "../../App.style";
@@ -13,7 +13,6 @@ export const SellerProfile = ({ userProfile, isLoading }) => {
   const clickShowPhone = () => {
     setShowPhone(true);
   };
-  const auth = JSON.parse(localStorage.getItem("auth"));
 
   const userProfilePhone = () => {
     return userProfile?.phone || "No phone number";
@@ -21,7 +20,7 @@ export const SellerProfile = ({ userProfile, isLoading }) => {
 
   return (
     <>
-      {auth?.isAuth ? <HeaderAuth /> : <Header />}
+      <MainHeader />
       <S.Main>
         {!isLoading ? (
           <T.MainContainer>

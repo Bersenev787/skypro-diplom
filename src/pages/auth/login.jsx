@@ -26,7 +26,6 @@ export const Login = ({ isLoginMode = true }) => {
     setLogin(true);
     try {
       await loginUser(email, password).then((data) => {
-        console.log("data", data);
         dispatch(
           setAuth({
             email: email,

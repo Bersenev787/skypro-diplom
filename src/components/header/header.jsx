@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as S from "./header.styled";
 import img from "../../img/logo.png";
 import { removeTokenFromLocalStorage } from "../../api/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddAds } from "../modals/add-ads/addAds";
 
 export const Header = () => {
@@ -18,12 +18,12 @@ export const Header = () => {
   );
 };
 
-export const HeaderAuth = ({ ads, setAds }) => {
+export const HeaderAuth = ({ ads, setAds, handleClickLogout }) => {
   const navigate = useNavigate();
-  const handleClickLogout = () => {
-    removeTokenFromLocalStorage();
-    navigate("/");
-  };
+  // const handleClickLogout = () => {
+  //   removeTokenFromLocalStorage();
+  //   navigate("/", { replace: true });
+  // };
 
   const [openFormAddAds, setOpenFormAddAds] = useState(false);
   return (
@@ -62,5 +62,40 @@ export const HeaderAuth = ({ ads, setAds }) => {
         </S.HeaderNav>
       </S.Header>
     </>
+  );
+};
+
+export const MainHeader = ({ ads, setAds }) => {
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(
+    auth?.isAuth || false
+  );
+  const navigate = useNavigate();
+
+  const updateAuthenticationStatus = () => {
+    const updatedAuth = JSON.parse(localStorage.getItem("auth"));
+    setIsUserAuthenticated(updatedAuth?.isAuth || false);
+  };
+
+  const handleClickLogout = () => {
+    removeTokenFromLocalStorage();
+    updateAuthenticationStatus();
+    navigate("/", { replace: true });
+  };
+
+  // useEffect(() => {
+  //   // if (!auth?.isAuth) {
+  //   updateAuthenticationStatus();
+  //   // }
+  // }, [auth]);
+
+  return isUserAuthenticated ? (
+    <HeaderAuth
+      ads={ads}
+      setAds={setAds}
+      handleClickLogout={handleClickLogout}
+    />
+  ) : (
+    <Header />
   );
 };

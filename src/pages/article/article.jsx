@@ -1,6 +1,6 @@
 import { Footer } from "../../components/footer/footer";
 import { Link, useParams } from "react-router-dom";
-import { HeaderAuth, Header } from "../../components/header/header";
+import { MainHeader } from "../../components/header/header";
 import { MainMenu } from "../../components/menu/menu";
 import * as S from "../../App.style";
 import * as T from "./article.styled";
@@ -105,7 +105,7 @@ export const Article = () => {
           setAdsComments={setAdsComments}
         />
       )}
-      {auth?.isAuth ? <HeaderAuth ads={data} setAds={currAds} /> : <Header />}
+      <MainHeader ads={data} setAds={currAds} />
       <S.Main>
         <T.MainContainer>
           {isLoading ? (

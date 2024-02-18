@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../../components/footer/footer";
-import { Header, HeaderAuth } from "../../components/header/header";
+import { MainHeader } from "../../components/header/header";
 import img from "../../img/logo.png";
 import imgMob from "../../img/logo-mob.png";
 import * as S from "./main.style";
@@ -10,7 +10,6 @@ import { apiHost } from "../../api/constants";
 
 export const MainPage = ({ ads, setAds, isLoading }) => {
   const [searchType, setSearchType] = useState("");
-  const auth = JSON.parse(localStorage.getItem("auth"));
 
   const filteredAds = () => {
     let filterAds = ads;
@@ -26,7 +25,7 @@ export const MainPage = ({ ads, setAds, isLoading }) => {
 
   return (
     <>
-      {auth?.isAuth ? <HeaderAuth ads={ads} setAds={setAds} /> : <Header />}
+      <MainHeader ads={ads} setAds={setAds} />
       <S.MainSearch>
         <S.SearchLogoLink href="#" target="_blank">
           <Link to="/">
